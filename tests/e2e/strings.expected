@@ -1,0 +1,7 @@
+a=hi n=2 empty=0
+b=bigger n=6
+t=tag 7 n=3
+short long empty
+empty small big
+hi hi
+e=[] n=0 empty=1

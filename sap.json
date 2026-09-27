@@ -1,0 +1,40 @@
+{
+  "schema": "sa.plugin/1",
+  "name": "rust",
+  "version": "0.1.0",
+  "source": {
+    "type": "local",
+    "path": "."
+  },
+  "abi": {
+    "plugin": 1,
+    "saasm": ">=0.4.0"
+  },
+  "artifacts": {
+    "linux-x86_64": {
+      "path": "zig-out/lib/librust.so"
+    },
+    "windows-x86_64": {
+      "path": "zig-out/bin/rust.dll"
+    }
+  },
+  "interfaces": {},
+  "skills": ["rust"],
+  "help": "usage: rust <command> [options]\n       sa rust <command> [options]\n\nCommands:\n  init       [path]\n  skills     [--json]\n  build      [file.rs] [--out <file.sa>]\n  build-exe  [file.rs] [--out <exe>] [sa-build-exe args]\n  check      [file.rs]\n  test       [file.rs] [sa-test args]\n  run        [file.rs] [sa-run args]\n  disasm-sab [file.rs] [--out <file.sa>]\n\nOptions:\n  -o, --out <file>   Explicit output path\n      --emit-sab     Also emit a .sab next to the .sa output\n  -h, --help         Show this help message\n",
+  "permissions": {
+    "fs": [
+      { "op": "read", "path": "$PROJECT/**" },
+      { "op": "write", "path": "$PROJECT/**" },
+      { "op": "create", "path": "$PROJECT/**" }
+    ],
+    "net": [],
+    "env": ["HOME", "PATH", "SA_*", "SCI_ROOT"],
+    "process": {
+      "spawn": true,
+      "exec": [
+        { "path": "/opt/zig/zig", "args": ["*"] }
+      ]
+    }
+  },
+  "dependencies": {}
+}
